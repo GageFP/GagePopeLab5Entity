@@ -1,0 +1,42 @@
+﻿@model GagePopeLab5.Models.Character
+
+@{
+    ViewData["Title"] = "Create";
+}
+<link rel="stylesheet" href="~/css/site.css" type="text/css" />
+<h1>Create</h1>
+
+<h4>Character</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="characterName" class="control-label"></label>
+                <input asp-for="characterName" class="form-control" />
+                <span asp-validation-for="characterName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="characterHealth" class="control-label"></label>
+                <input asp-for="characterHealth" class="form-control" />
+                <span asp-validation-for="characterHealth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="weaponName" class="control-label"></label>
+                <select asp-for="weaponName" class ="form-control" asp-items="ViewBag.weaponName"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

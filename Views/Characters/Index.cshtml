@@ -1,0 +1,47 @@
+﻿@model IEnumerable<GagePopeLab5.Models.Character>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link rel="stylesheet" href="~/css/site.css" type="text/css" />
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Health
+            </th>
+            <th>
+                Weapon
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.characterName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.characterHealth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weapon.weaponName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.characterID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.characterID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.characterID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
